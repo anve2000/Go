@@ -3,9 +3,10 @@ package main
 import "fmt"
 
 func main(){
-	var card string = "Ace of Spades"
-	boxSize:= 23
-	boxSize=45
+	card:=getCardValue()
+	fmt.Println((card))
+}
 
-	fmt.Println(card, boxSize);
+func getCardValue() string{
+	return "Hello"
 }
