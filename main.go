@@ -3,5 +3,9 @@ package main
 import "fmt"
 
 func main(){
-	fmt.Println("Hi there!")
+	var card string = "Ace of Spades"
+	boxSize:= 23
+	boxSize=45
+
+	fmt.Println(card, boxSize);
 }
