@@ -3,10 +3,7 @@ package main
 import "fmt"
 
 func main(){
-	card:=getCardValue()
-	fmt.Println((card))
+   state:=	printState();
+   fmt.Println(state);
 }
 
-func getCardValue() string{
-	return "Hello"
-}
