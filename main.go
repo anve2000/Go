@@ -4,37 +4,23 @@ import "fmt"
 
 
 func main() {
-	name:="Anvesha"
+	// var colors map[string]string;	
+	colors:=make(map[string]string);
 
-	namePointer:=&name;
+	// colors:=map[string]string{
+	// 	"red":"123",
+	// 	"green":"232",
+	// }
 
-	fmt.Println(name)    // BEFORE CHANGE       Anvesha
-	fmt.Println(&namePointer) // 0xc000058040
-	fmt.Println(*namePointer) // Anvesha
-	fmt.Println(namePointer)  // 0xc000012090
-	fmt.Println(&name)        // 0xc000012090
+	colors["yellow"] = "879"
 
-	printPointer(namePointer)
+	colors = map[string]string{
+		"Blue":"977",
+	}
 
-	fmt.Println(name)	// AFTER CHANGE         Alice
+	delete(colors, "Blue")
 
-}
+	fmt.Println("Colors ", colors);
+		fmt.Printf("%+v", colors);
 
-func printPointer(namePointer *string){
-
-	fmt.Println("PRINTING INSIDE FUNCTION");
-	fmt.Println(&namePointer)   // 0xc000058050
-	fmt.Println(*namePointer)  // Anvesha
-	fmt.Println(namePointer)  // 0xc000012090
-
-	name:=*namePointer;
-	fmt.Println(&name);        // 0xc0000aa070
-
-
-	// CHANGING
-	*namePointer = "Alice"
-	name = "Riya";
-	
-
-	fmt.Println(name); // CHANGED VALUE INSIDE FUNCTION         Riya
 }
