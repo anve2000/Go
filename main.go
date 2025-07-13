@@ -2,58 +2,39 @@ package main
 
 import "fmt"
 
-type person struct{
-	firstName string
-	lastName string
-	contact contactInfo
-	job
-}
-
-type job struct{
-	name string
-	desc string
-}
-
-type contactInfo struct{
-	email string
-	zipCode int
-}
 
 func main() {
-	// alex:=person{"Alex", "Anderson"}   // method 1 to declare
-	// alex:=person{
-	// 	firstName:"Alex",
-	// 	lastName: "Blue",
-	// }									// method 2 to declare
-	// fmt.Println(alex);
+	name:="Anvesha"
 
-	// var alex person;
-	// alex.firstName = "Alex"
-	// alex.lastName = "Blue"
-	// fmt.Printf("%+v", alex);                // method 3 , notice the specifier %+v
+	namePointer:=&name;
 
-	alex:=person{
-		firstName: "Alex",
-		lastName: "Blue",
-		contact: contactInfo{
-			email: "a@mail.com",
-			zipCode: 110001,
-		},
-		job: job{
-			name: "Developer",
-			desc: "create apps",
-		},
-	}
+	fmt.Println(name)    // BEFORE CHANGE       Anvesha
+	fmt.Println(&namePointer) // 0xc000058040
+	fmt.Println(*namePointer) // Anvesha
+	fmt.Println(namePointer)  // 0xc000012090
+	fmt.Println(&name)        // 0xc000012090
 
-	alex.print();
-	// alex.updateName("John")
-	// alex.print()
+	printPointer(namePointer)
+
+	fmt.Println(name)	// AFTER CHANGE         Alice
+
 }
 
-func (p person) print(){
-	fmt.Printf("%+v", p);
-}
+func printPointer(namePointer *string){
 
-// func (p person) updateName(newFirstName string){
-// 	p.firstName = newFirstName
-// }
+	fmt.Println("PRINTING INSIDE FUNCTION");
+	fmt.Println(&namePointer)   // 0xc000058050
+	fmt.Println(*namePointer)  // Anvesha
+	fmt.Println(namePointer)  // 0xc000012090
+
+	name:=*namePointer;
+	fmt.Println(&name);        // 0xc0000aa070
+
+
+	// CHANGING
+	*namePointer = "Alice"
+	name = "Riya";
+	
+
+	fmt.Println(name); // CHANGED VALUE INSIDE FUNCTION         Riya
+}
